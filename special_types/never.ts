@@ -9,7 +9,7 @@ function throwError(): never {
 
 // Это не работает! never - подтип. Мы не можем присвоить подтипу значение супертипу
 let playerName: string = 'Robert'; // Супертип
-let playerName2: never = playerName; // Подтип
+// let playerName2: never = playerName; // Подтип
 
 // Это работает! never - подтип. Мы можем присвоить супертипу значение подтипа
 let accountAge: never = throwError(); // Подтип
@@ -21,14 +21,14 @@ enum Values {
 	THIRD,
 }
 
-function fn(value: Values) {
+function fnNever(value: Values) {
 	switch (value) {
 		case Values.FIRST:
 			return value;
 		case Values.SECOND:
 			return value;
 		default:
-			const ex: never = value;
+			// const ex: never = value; <-- Error
 			return value;
 	}
 }

@@ -8,4 +8,4 @@ const usName2: unknown = usName;
 
 // Это не работает! Unknown - супертип. Мы не можем присвоить подтипу значение супертипа
 const usAge: unknown = 25;
-const usAge2: number = usAge;
+// const usAge2: number = usAge;
