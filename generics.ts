@@ -102,3 +102,15 @@ class Order<T> {
 
 // Пример использования Order
 const order = new Order<PlayerData>({ username: 'Ivan' });
+
+// --- Условная конструкция в Generic ---
+
+type isArray<T> = T extends any[] ? true : false;
+
+const first: isArray<string> = false;
+
+type RandomName<T> = T extends PlayerData
+	? { value: PlayerData }
+	: { value: string };
+
+const third: RandomName<number> = {};
