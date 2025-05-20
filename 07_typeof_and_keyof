@@ -28,7 +28,7 @@ type GetDataParams = Parameters<typeof getData>;
 // Берем тип у объекта и берем его ключи
 type PersonKey = keyof typeof obj;
 
-// arg: T, key: K заполняя аргументы мы заполняем Generics
+// arg: T, key: K заполняя аргументы мы заполняем Generics (механизмом вывода типов (type inference))
 function getByKey<T, K extends keyof T>(arg: T, key: K): T[K] {
 	return arg[key];
 }
