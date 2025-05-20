@@ -162,3 +162,48 @@ const strLength2: number = (<string>value).length;
 | Функции         | Да     | Да     |
 | Примитивы       | Да     | Нет    |
 | null/undefined  | Нет    | Нет    |
+
+---
+
+## 🔍 Операторы `typeof` и `keyof` в TypeScript
+
+### `typeof`
+
+В TypeScript оператор `typeof` используется в двух контекстах:
+
+1. **В рантайме (JavaScript):**
+
+   - Оператор `typeof` возвращает строку с типом значения.
+   - Пример:
+     ```javascript
+     typeof 42; // "number"
+     typeof 'hello'; // "string"
+     ```
+
+2. **На уровне типов (TypeScript):**
+   - Позволяет извлекать тип переменной или значения для дальнейшего использования в аннотациях типов.
+   - Пример:
+     ```typescript
+     const user = { name: 'Alice', age: 30 };
+     type User = typeof user; // { name: string; age: number }
+     ```
+
+### `keyof`
+
+Оператор `keyof` позволяет получить **множество ключей** типа объекта в виде строкового литерального типа.
+
+- Пример:
+
+  ```typescript
+  type User = { name: string; age: number };
+  type UserKeys = keyof User; // "name" | "age"
+  ```
+
+- Часто используется вместе с `typeof` для создания универсальных функций:
+  ```typescript
+  const user = { name: 'Alice', age: 30 };
+  function getValue<T, K extends keyof T>(obj: T, key: K): T[K] {
+  	return obj[key];
+  }
+  const name = getValue(user, 'name'); // тип string
+  ```
