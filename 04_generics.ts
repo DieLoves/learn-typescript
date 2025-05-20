@@ -109,8 +109,9 @@ type isArray<T> = T extends any[] ? true : false;
 
 const first: isArray<string> = false;
 
+// Generic соответствует типу PlayerData?
 type RandomName<T> = T extends PlayerData
 	? { value: PlayerData }
 	: { value: string };
 
-const third: RandomName<number> = {};
+// const third: RandomName<number> = {};
